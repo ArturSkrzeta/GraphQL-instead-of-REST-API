@@ -48,7 +48,53 @@
 									<header class="major">
 										<h2>GraphQL instead of REST for API Design</h2>
 										<h3>Intro</h3>
-										<p>....</p>
+
+										<h5>GrapQL</h5>
+										<ul>
+											<li>We can find GrapQL as an alternative for REST when developing API that boost web-app performance.</li>
+											<li>However, there is still REST on the top and it has become the industry standard for deploying APIs.</li>
+										</ul>
+
+										<table>
+											<thead>
+												<th>GraphQL</th>
+												<th>REST</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Whole architecture for network-based software.</td>
+													<td>Specification providing structured query langauge.</td>
+												</tr>
+												<tr>
+													<td>Built on HTTP protocol.</td>
+													<td>Built on HTTP protocol.</td>
+												</tr>
+												<tr>
+													<td>Hits one endpoint for all API's resources.</td>
+													<td>Many endpoints for API's resources.</td>
+												</tr>
+												<tr>
+													<td>Defining in a query what data you need.</td>
+													<td>Hitting a specific endpoint dictates what data you get.</td>
+												</tr>
+												<tr>
+													<td>One API call gives you everything you need.</td>
+													<td>Many API calls to many endpoints to get what you need.</td>
+												</tr>
+												<tr>
+													<td>Fetchs only queried data.</td>
+													<td>Fetch complete dataset resource gives.</td>
+												</tr>
+											</tbody>
+										</table>
+
+										<h5>Query structure:</h5>
+										<ul>
+											<li>It organizes data into a graph where objets are represented by nodes.</li>
+											<li>Like in every graph stucure, the relationships between nodes are represented by edges.</li>
+											<li>Each node is being accessed by so-called <b>resolver</b> and due what is in there, resolver accesses appropriate API's resource.</li>
+										</ul>
+
 									</header>
 								</div>
 							</section>
@@ -59,7 +105,8 @@
 									<h3>Features</h3>
 									<p>App includes following features:</p>
 									<ul class="feature-icons">
-										<li class="icon solid fa-check">...</li>
+										<li class="icon solid fa-check">GraphQL</li>
+										<li class="icon solid fa-check">NodeJS</li>
 									</ul>
 								</div>
 							</section>
