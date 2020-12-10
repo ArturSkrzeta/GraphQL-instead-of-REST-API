@@ -53,7 +53,7 @@
 										<ul>
 											<li>We can find GrapQL as an alternative for REST when developing API that boost web-app performance.</li>
 											<li>However, there is still REST on the top and it has become the industry standard for deploying APIs.</li>
-											<li>In short, by GrapQL you hit only one API's endpoin, you specify waht you need with query,
+											<li>In short, by GrapQL you hit only one API's endpoint, you specify what you need with query,
 												and you get only as much information as you need or as little information as you need instead of getting a complete dataset what we call <b>over-fetching</b></li>
 											<li>Because of it's specification, we can query some nested information as well.</li>
 										</ul>
@@ -120,10 +120,35 @@
 								<div class="container">
 									<h3>Demo</h3>
 
-									<h5></h5>
+									<h5>GrapQL in NodeJS implementation:</h5>
 									<ul>
-										<li>....</li>
+										<li>NodeJS has its own library that offers fully implementation of GrapQL</li>
+										<li>Every GrapQL API needs to start with so-called <b>RootQuery</b>:
+											<br>
+											<code>const RootQueryType = new GraphQLObjectType({</code><br>&nbsp&nbsp
+												<code>name: 'Query',</code><br>&nbsp&nbsp
+												<code>description: 'Root Query',</code><br>&nbsp&nbsp
+												<code>fields: () => ({</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>items: {</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>type: new GraphQLList(ItemType),</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>description: 'List of All Books',</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>resolve: () => items</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>},</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>item :{</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>type: ItemType,</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>description: 'A Single Item',</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>args: {</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+															<code>id: { type: GraphQLInt }</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>},</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>resolve: (parent, args) => items.find(item => item.id === args.id)</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>}</code><br>&nbsp&nbsp
+												<code>})</code><br>
+											<code>})</code>
+										</li>
+
 									</ul>
+
+				
 
 								</div>
 							</section>
