@@ -131,7 +131,7 @@
 												<code>fields: () => ({</code><br>&nbsp&nbsp&nbsp&nbsp
 													<code>items: {</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 														<code>type: new GraphQLList(ItemType),</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-														<code>description: 'List of All Books',</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>description: 'List of All Items',</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 														<code>resolve: () => items</code><br>&nbsp&nbsp&nbsp&nbsp
 													<code>},</code><br>&nbsp&nbsp&nbsp&nbsp
 													<code>item :{</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -145,11 +145,39 @@
 												<code>})</code><br>
 											<code>})</code>
 										</li>
-
+										<li>RootQuery references to ItemType query:
+											<br>
+											<code>const ItemType = new GraphQLObjectType({</code><br>&nbsp&nbsp
+												<code>name:'Item',</code><br>&nbsp&nbsp
+												<code>description: 'This represents an item in company's inventory.',</code><br>&nbsp&nbsp
+												<code>fields: () => ({</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>id: { type: GraphQLNonNull(GraphQLInt) },</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>name: { type: GraphQLNonNull(GraphQLString) },</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>producerId: { type: GraphQLNonNull(GraphQLInt) },</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>producer: {</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>type: ProducerType,</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>resolve: (item) => {</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+															<code>return producers.find(producer => producer.id === item.producerId)</code><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+														<code>}</code><br>&nbsp&nbsp&nbsp&nbsp
+													<code>}</code><br>&nbsp&nbsp
+												<code>})</code><br>
+											<code>})</code>
+											<br>
+										</li>
+										<li> Only last thing to define is a schema:
+											<br>
+											<code>const schema = new GraphQLSchema({</code><br>&nbsp&nbsp
+												<code>query: RootQueryType,</code><br>
+											<code>})</code>
+										</li>
+										<li> We define endpoint 'graphql' and we pass the schema when the endpoint called:
+											<br>
+											<code>app.use('/graphql', expressGraphQL({</code><br>&nbsp&nbsp
+	  										<code>schema: schema,</code><br>&nbsp&nbsp
+											  <code>raphiql: true</code><br>
+											<code>}))</code>
+										</li>
 									</ul>
-
-				
-
 								</div>
 							</section>
 
