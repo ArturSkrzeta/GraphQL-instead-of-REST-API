@@ -172,7 +172,7 @@
 										</li>
 										<li> We define endpoint 'graphql' and we pass the schema when the endpoint called:
 											<br>
-											<code>app.use('/graphql', expressGraphQL({</code><br>&nbsp&nbsp
+											<code>app.use('/graphql', graphqlHTTP({</code><br>&nbsp&nbsp
 	  										<code>schema: schema,</code><br>&nbsp&nbsp
 											  <code>graphiql: true</code><br>
 											<code>}))</code>
